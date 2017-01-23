@@ -9,7 +9,8 @@ var Asset = ns.Asset = Hilo.Class.create({
     logo: null,
     startButton: null,
     countdown: null,
-    ground: null,
+    ground1: null,
+    ground2: null,
     hentai: null,
     milk1: null,
     milk2: null,
@@ -26,7 +27,8 @@ var Asset = ns.Asset = Hilo.Class.create({
             {id:'logo', src:'images/opening/logo.png'},
             {id:'startButton', src:'images/opening/start_button.png'},
             {id:'countdown', src:'images/game/countdown.png'},
-            {id:'ground', src:'images/game/ground.png'},
+            {id:'ground1', src:'images/game/ground1.png'},
+            {id:'ground2', src:'images/game/ground2.png'},
             {id:'hentai', src:'images/game/hentai.png'},
             {id:'milk1', src:'images/game/milk1.png'},
             {id:'milk2', src:'images/game/milk2.png'},
@@ -49,7 +51,8 @@ var Asset = ns.Asset = Hilo.Class.create({
         this.startButton = this.queue.get('startButton').content;
         this.countdown = this.queue.get('countdown').content;
         this.hentai = this.queue.get('hentai').content;
-        this.ground = this.queue.get('ground').content;
+        this.ground1 = this.queue.get('ground1').content;
+        this.ground2 = this.queue.get('ground2').content;
         this.milk1 = this.queue.get('milk1').content;
         this.milk2 = this.queue.get('milk2').content;
 

@@ -100,7 +100,8 @@ var game = window.game = {
         this.gameScene = new game.GameScene({
             width: this.width,
             height: this.height,
-            ground: this.asset.ground,
+            ground1: this.asset.ground1,
+            ground2: this.asset.ground2,
             hentai: this.asset.hentai,
             visible: false,
         }).addTo(this.stage);
