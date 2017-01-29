@@ -22,6 +22,30 @@ var GameScene = ns.GameScene = Hilo.Class.create({
             image: properties.hentai,
             rect: [0, 0, 640, 1000]
         });
+
+        var countdown = new Hilo.Bitmap({
+            image: properties.countdown,
+            rect: [0, 0, 141, 67]
+        });
+
+        var secondsText = new Hilo.BitmapText({
+            scaleX: 0.5,
+            scaleY: 0.5,
+            text: 60
+        }).addTo(this);
+
+        var second = 60;
+        var interval;
+
+        interval = setInterval(function(){
+            if (second > 0) {
+                second--;
+            } else if (second <= 0) {
+                clearInterval(interval);
+                this.gameOver(); // 倒计时结束, 结束游戏
+            }
+        }, 1000);
+
         //放置ground的位置
         ground1.x = 0;
         ground1.y = 0;
@@ -36,8 +60,7 @@ var GameScene = ns.GameScene = Hilo.Class.create({
         // Hilo.Tween.to(ground, {y:-2}, {duration:200, loop:true});
         //hentai左右晃动的动画
         Hilo.Tween.to(hentai, {x: hentai.x - 10}, {duration:400, reverse:true, loop:true});
-        this.addChild(ground1, hentai);
-        this.addChild(ground2, hentai);
+        this.addChild(ground1, ground2, hentai, countdown, secondsText);
     }
 });
 

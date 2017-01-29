@@ -105,20 +105,38 @@ var game = window.game = {
             hentai: this.asset.hentai,
             visible: false,
         }).addTo(this.stage);
+
         //结束场景
-        // this.gameOverScene = new game.OverScene({
-        //     width: this.width,
-        //     height: this.height,
-        //     image: this.asset.over,
-        //     numberGlyphs: this.asset.numberGlyphs,
-        //     visible: false
-        // }).addTo(this.stage);
+        this.gameOverScene = new game.OverScene({
+            width: this.width,
+            height: this.height,
+            // image: this.asset.over,
+            // numberGlyphs: this.asset.numberGlyphs,
+            visible: false
+        }).addTo(this.stage);
 
         //绑定开始游戏按钮
         this.gameReadyScene.getChildById('start').on(Hilo.event.POINTER_START, function(e){
             e._stopped = true;
             this.gameStart();
         }.bind(this));
+
+        // 重新开始游戏按钮
+        this.gameOverScene.getChildById('replayBtn').on(Hilo.event.POINTER_START, function(e){
+            //阻止舞台stage响应后续事件
+            e.stopImmediatePropagation();
+            this.gameOverScene.visible = false;
+        }.bind(this));
+
+        // 关闭分享提示遮罩
+        this.gameOverScene.getChildById('shareBtn').on(Hilo.event.POINTER_START, function(e){
+            this.gameOverScene.getChildById('sharePanel').visible = true;
+        }.bind(this));
+
+        // 关闭分享提示遮罩
+        // this.gameOverScene.getChildById('close').on(Hilo.event.POINTER_START, function(e){
+        //     this.gameOverScene.getChildById('sharePanel').visible = false;
+        // }.bind(this));
     },
 
     onUpdate: function(delta){
@@ -170,11 +188,17 @@ var game = window.game = {
             //设置当前状态为结束over
             this.state = 'over';
         }
+
+        this.gameOverScene.show(this.score);
+        // this.gameOverScene.visible = true;
+        // this.gameScene.visible = false;
     },
+
     removeCouple: async function(newCouple) {
-      await this.sleep(1000)
+      await this.sleep(1000);
       this.stage.removeChild(newCouple);
     },
+
     sleep: function(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }

@@ -38,6 +38,15 @@ var Asset = ns.Asset = Hilo.Class.create({
             {id:'couple2_break', src:'images/couple/couple2_break.png'},
             {id:'couple3', src:'images/couple/couple3.png'},
             {id:'couple3_break', src:'images/couple/couple3_break.png'},
+
+            {id:'levelImage1', src:'images/over/lv1.png'},
+            {id:'levelImage2', src:'images/over/lv2.png'},
+            {id:'levelImage3', src:'images/over/lv3.png'},
+
+            {id:'replayBtn', src:'images/over/btn-replay.png'},
+            {id:'shareBtn', src:'images/over/btn-share.png'},
+            {id:'close', src:'images/over/close.png'},
+            {id:'sharePanel', src:'images/over/share-panel.png'},
         ];
 
         this.queue = new Hilo.LoadQueue();
