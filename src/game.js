@@ -18,7 +18,7 @@ var game = window.game = {
     coupleMinY: 0,
     coupleMaxX: 0,
     coupleMinX: 0,
-    countdownText: 60, //倒计时
+    countdownText: '60', //倒计时
 
     gameReadyScene: null, //开始界面
     gameScene: null, //游戏界面
@@ -119,7 +119,7 @@ var game = window.game = {
         }).addTo(this.stage);
 
         // 倒计时时间
-        this.secondsText = new Hilo.BitmapText({
+        this.secondsText = new Hilo.Text({
             scaleX: 0.5,
             scaleY: 0.5,
             text: this.countdownText
@@ -156,7 +156,10 @@ var game = window.game = {
         }
         //游戏开始后，主要是要不断产生情侣精灵，先简单写一个算法
         if(this.state === 'playing'){
-          if((+new Date()) - this.oldTime > 500){    //0.5秒出现一个
+
+            var now = new Date();
+
+          if((+now) - this.oldTime > 500){    //0.5秒出现一个
             var ran = parseInt(Math.random() * 3);
             var atlas = null;
             var break_atlas = null;
@@ -171,7 +174,7 @@ var game = window.game = {
               break_atlas = this.asset.couple3_2_black;
             }
             var newCouple = new game.Couple({
-                id: 'couple' + (+new Date()),
+                id: 'couple' + (+now),
                 atlas: atlas,
                 interval: 500,
                 life: 1,
@@ -197,18 +200,22 @@ var game = window.game = {
                 this.removeCouple(newCouple);
             }.bind(this));
 
-            this.oldTime =+ new Date();
+
+            // 如果过了 1s
+            if (this.oldTime - now >= 1000) {
+                this.countdownText--; // 倒计时减 1s
+                this.oldTime = now;
+            }
 
 
+            this.secondsText.text = this.countdownText;
 
-            this.countdownText--;
+            // 倒计时为 0, 游戏结束
+            if (this.countdownText <= 0) {
+                this.gameOver();
+            }
 
-            // 倒计时
-              this.secondsText.setText(this.countdownText);
 
-              if (this.countdownText <= 0) {
-                  this.gameOver();
-              }
 
           }
         }
