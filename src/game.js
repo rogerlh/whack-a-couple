@@ -147,9 +147,24 @@ var game = window.game = {
         //游戏开始后，主要是要不断产生情侣精灵，先简单写一个算法
         if(this.state === 'playing'){
           if((+new Date()) - this.oldTime > 500){    //0.5秒出现一个
+            var ran = parseInt(Math.random() * 3);
+            var atlas = null;
+            var break_atlas = null;
+            if(ran == 0){
+              atlas = this.asset.couple1_1_black;
+              break_atlas = this.asset.couple1_2_black;
+            }else if (ran == 1){
+              atlas = this.asset.couple2_1_black;
+              break_atlas = this.asset.couple2_2_black;
+            }else{
+              atlas = this.asset.couple3_1_black;
+              break_atlas = this.asset.couple3_2_black;
+            }
             var newCouple = new game.Couple({
                 id: 'couple' + (+new Date()),
-                atlas: this.asset.couple1,
+                atlas: atlas,
+                interval: 500,
+                life: 1,
                 startX: this.coupleMinX + (this.coupleMaxX - this.coupleMinX) * Math.random(),  //随机选取一个位置
                 startY: this.coupleMinY + (this.coupleMaxY - this.coupleMinY) * Math.random(),
                 callbackFun: function(){
@@ -161,7 +176,12 @@ var game = window.game = {
             newCouple.on(Hilo.event.POINTER_START, function(e){  //加进舞台里并绑定点击事件
                 e._stopped = true;
                 this.score += 1;  //加1得分
-                newCouple.addFrame(this.asset.couple1_break.getSprite('couple_break'), 0); //把break加到最开始的帧
+                if(newCouple.life > 0){
+                  newCouple.life -= 1;
+                }
+                if(newCouple.life == 0){
+                  newCouple.addFrame(break_atlas.getSprite('couple'), 0); //把break加到最开始的帧
+                }
                 newCouple.getReady();
                 Hilo.Tween.remove(newCouple);
                 this.removeCouple(newCouple);
