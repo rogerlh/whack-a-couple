@@ -28,23 +28,23 @@ var GameScene = ns.GameScene = Hilo.Class.create({
             rect: [0, 0, 141, 67]
         });
 
-        var secondsText = new Hilo.BitmapText({
-            scaleX: 0.5,
-            scaleY: 0.5,
-            text: 60
-        }).addTo(this);
+        // var secondsText = new Hilo.BitmapText({
+        //     scaleX: 0.5,
+        //     scaleY: 0.5,
+        //     text: 60
+        // }).addTo(this);
 
-        var second = 60;
-        var interval;
-
-        interval = setInterval(function(){
-            if (second > 0) {
-                second--;
-            } else if (second <= 0) {
-                clearInterval(interval);
-                this.gameOver(); // 倒计时结束, 结束游戏
-            }
-        }, 1000);
+        // var second = 60;
+        // var interval;
+        //
+        // interval = setInterval(function(){
+        //     if (second > 0) {
+        //         second--;
+        //     } else if (second <= 0) {
+        //         clearInterval(interval);
+        //         this.gameOver(); // 倒计时结束, 结束游戏
+        //     }
+        // }, 1000);
 
         //放置ground的位置
         ground1.x = 0;

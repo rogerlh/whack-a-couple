@@ -2,7 +2,7 @@
 
 window.onload = function(){
     game.init();
-}
+};
 
 var game = window.game = {
     width: 0,
@@ -18,11 +18,14 @@ var game = window.game = {
     coupleMinY: 0,
     coupleMaxX: 0,
     coupleMinX: 0,
+    countdownText: 60, //倒计时
 
     gameReadyScene: null, //开始界面
     gameScene: null, //游戏界面
     gameOverScene: null, //结束界面
     opening: null, //开场动画
+
+    countdownBitmapText: null, //倒计时
 
     init: function(){
         this.asset = new game.Asset();
@@ -84,7 +87,7 @@ var game = window.game = {
             callbackFun: function(){
               this.tween = Hilo.Tween.to(this, {scaleX: 0.7, scaleY: 0.7, y: this.y + this.height * 0.3 }, {duration:400, loop:false});
               that.gameReadyScene.visible = true;
-            },
+            }
         }).addTo(this.stage);
     },
     initScenes: function(){
@@ -103,7 +106,7 @@ var game = window.game = {
             ground1: this.asset.ground1,
             ground2: this.asset.ground2,
             hentai: this.asset.hentai,
-            visible: false,
+            visible: false
         }).addTo(this.stage);
 
         //结束场景
@@ -113,6 +116,13 @@ var game = window.game = {
             // image: this.asset.over,
             // numberGlyphs: this.asset.numberGlyphs,
             visible: false
+        }).addTo(this.stage);
+
+        // 倒计时时间
+        this.secondsText = new Hilo.BitmapText({
+            scaleX: 0.5,
+            scaleY: 0.5,
+            text: this.countdownText
         }).addTo(this.stage);
 
         //绑定开始游戏按钮
@@ -128,7 +138,7 @@ var game = window.game = {
             this.gameOverScene.visible = false;
         }.bind(this));
 
-        // 关闭分享提示遮罩
+        // 分享
         this.gameOverScene.getChildById('shareBtn').on(Hilo.event.POINTER_START, function(e){
             this.gameOverScene.getChildById('sharePanel').visible = true;
         }.bind(this));
@@ -186,7 +196,20 @@ var game = window.game = {
                 Hilo.Tween.remove(newCouple);
                 this.removeCouple(newCouple);
             }.bind(this));
-            this.oldTime = +new Date();
+
+            this.oldTime =+ new Date();
+
+
+
+            this.countdownText--;
+
+            // 倒计时
+              this.secondsText.setText(this.countdownText);
+
+              if (this.countdownText <= 0) {
+                  this.gameOver();
+              }
+
           }
         }
     },

@@ -59,7 +59,6 @@ var Asset = ns.Asset = Hilo.Class.create({
         this.logo = this.queue.get('logo').content;
         this.startButton = this.queue.get('startButton').content;
         this.countdown = this.queue.get('countdown').content;
-        this.hentai = this.queue.get('hentai').content;
         this.ground1 = this.queue.get('ground1').content;
         this.ground2 = this.queue.get('ground2').content;
         this.milk1 = this.queue.get('milk1').content;
@@ -68,7 +67,7 @@ var Asset = ns.Asset = Hilo.Class.create({
         this.couple1_1_black = new Hilo.TextureAtlas({
             image: this.queue.get('couple1_1_black').content,
             frames: [[0, 0, 256, 400],
-                     [256, 0, 256, 400]
+                     [256, 0, 256, 400],
                     ],
             sprites: {
                 couple: [0, 1, 0, 1]
