@@ -6,19 +6,19 @@ var Couple = ns.Couple = Hilo.Class.create({
     constructor: function(properties){
         Couple.superclass.constructor.call(this, properties);
         this.addFrame(properties.atlas.getSprite('couple'));
-        this.setFrameCallback(2, properties.callbackFun);
+        this.setFrameCallback(3, properties.callbackFun);
         this.x = properties.startX;
         this.y = properties.startY;
-        this.scaleX = 0.3;
-        this.scaleY = 0.3;
+        this.timeBased = true;
+        this.interval = properties.interval;  //用来计时消失....
+        this.life = properties.life;
+        this.scaleX = 0.7;
+        this.scaleY = 0.7;
     },
 
     getReady: function(){
-        this.timeBased = true;
-        this.rotation = 4;
-        this.interval = 1000;  //每秒1帧，那就是2秒后到第三帧，用来计时消失....
         this.play();
-        this.tween = Hilo.Tween.to(this, {rotation:-8}, {duration:500, reverse:true, loop:true});
+        // this.tween = Hilo.Tween.to(this, {rotation:-8}, {duration:500, reverse:true, loop:true});
     },
 
     onUpdate: function(){
