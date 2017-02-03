@@ -12,8 +12,8 @@ var Couple = ns.Couple = Hilo.Class.create({
         this.timeBased = true;
         this.interval = properties.interval;  //用来计时消失....
         this.life = properties.life;
-        this.scaleX = 0.7;
-        this.scaleY = 0.7;
+        // this.scaleX = 0.7;
+        // this.scaleY = 0.7;
     },
 
     getReady: function(){

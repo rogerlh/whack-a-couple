@@ -7,7 +7,7 @@ var Asset = ns.Asset = Hilo.Class.create({
     queue: null,
     openingAtlas: null,
     logo: null,
-    startButton: null,
+    startBtn: null,
     countdown: null,
     ground1: null,
     ground2: null,
@@ -25,7 +25,8 @@ var Asset = ns.Asset = Hilo.Class.create({
         var resources = [
             {id:'opening', src:'images/opening/opening.png'},
             {id:'logo', src:'images/opening/logo.png'},
-            {id:'startButton', src:'images/opening/start_button.png'},
+            {id:'startBtn', src:'images/opening/start_button.png'},
+            {id:'buttonTip', src:'images/opening/button_tip.png'},
             {id:'countdown', src:'images/game/countdown.png'},
             {id:'ground1', src:'images/game/ground1.png'},
             {id:'ground2', src:'images/game/ground2.png'},
@@ -37,10 +38,13 @@ var Asset = ns.Asset = Hilo.Class.create({
             {id:'levelImage2', src:'images/over/lv2.png'},
             {id:'levelImage3', src:'images/over/lv3.png'},
 
-            {id:'replayBtn', src:'images/over/btn-replay.png'},
-            {id:'shareBtn', src:'images/over/btn-share.png'},
-            {id:'close', src:'images/over/close.png'},
-            {id:'sharePanel', src:'images/over/share-panel.png'},
+            {id:'replayBtn', src:'images/over/replay_button.png'},
+            {id:'shareBtn', src:'images/over/share_button.png'},
+            {id:'closeBtn', src:'images/over/close_button.png'},
+            {id:'moreBtn', src:'images/over/more_button.png'},
+
+            {id:'sharePanel', src:'images/over/panel_share.png'},
+
             {id:'couple1_1_black', src:'images/couple/black/couple1_1.png'},
             {id:'couple1_2_black', src:'images/couple/black/couple1_2.png'},
             {id:'couple2_1_black', src:'images/couple/black/couple2_1.png'},
@@ -57,12 +61,21 @@ var Asset = ns.Asset = Hilo.Class.create({
 
     onComplete: function(e){
         this.logo = this.queue.get('logo').content;
-        this.startButton = this.queue.get('startButton').content;
+        this.startBtn = this.queue.get('startBtn').content;
+        this.buttonTip = this.queue.get('buttonTip').content;
+        this.hentai = this.queue.get('hentai').content;
         this.countdown = this.queue.get('countdown').content;
         this.ground1 = this.queue.get('ground1').content;
         this.ground2 = this.queue.get('ground2').content;
         this.milk1 = this.queue.get('milk1').content;
         this.milk2 = this.queue.get('milk2').content;
+
+        this.replayBtn = this.queue.get('replayBtn').content;
+        this.shareBtn = this.queue.get('shareBtn').content;
+        this.closeBtn = this.queue.get('closeBtn').content;
+        this.moreBtn = this.queue.get('moreBtn').content;
+        this.sharePanel = this.queue.get('sharePanel').content;
+
 
         this.couple1_1_black = new Hilo.TextureAtlas({
             image: this.queue.get('couple1_1_black').content,
