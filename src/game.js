@@ -227,9 +227,12 @@
                 var now = new Date().getTime(); // 当前的时间
                 var coupleSprite = null;
                 var coupleBreakSprite = null;
+                var coupleSprite_r = null;
+                var coupleBreakSprite_r = null;
                 var life = 1;
                 var timeout = 0;
                 var createFlag = 0;
+                var interval = 250;
 
                 //随机算法
                 if (this.gameTime - this.seconds < this.gameTime / 2) { //第一阶段
@@ -253,7 +256,7 @@
                 } else { //第二阶段
                     if ((now) - this.lastTime >= 500) { //0.5s出现一个
                         this.lastTime = now;
-                        timeout = 0.5; //0.5s后消失
+                        timeout = 1; //1s后消失
                         var ran = parseInt(Math.random() * 10);
                         if (ran <= 6) {
                             life = 1; //生产普通情侣
@@ -271,15 +274,22 @@
                         } else {
                             life = 2; //生产红色情侣
                             ran = parseInt(Math.random() * 3);
+                            interval = 125;
                             if (ran == 0) {
                                 coupleSprite = this.asset.couple_r_1.getSprite('couple');
                                 coupleBreakSprite = this.asset.couple_r_1.getSprite('couple_break');
+                                coupleSprite_r = this.asset.couple_r_1.getSprite('couple_r');
+                                coupleBreakSprite_r = this.asset.couple_r_1.getSprite('couple_r_break');
                             } else if (ran == 1) {
                                 coupleSprite = this.asset.couple_r_2.getSprite('couple');
                                 coupleBreakSprite = this.asset.couple_r_2.getSprite('couple_break');
+                                coupleSprite_r = this.asset.couple_r_2.getSprite('couple_r');
+                                coupleBreakSprite_r = this.asset.couple_r_2.getSprite('couple_r_break');
                             } else {
                                 coupleSprite = this.asset.couple_r_3.getSprite('couple');
                                 coupleBreakSprite = this.asset.couple_r_3.getSprite('couple_break');
+                                coupleSprite_r = this.asset.couple_r_3.getSprite('couple_r');
+                                coupleBreakSprite_r = this.asset.couple_r_3.getSprite('couple_r_break');
                             }
                         }
                         createFlag = 1;
@@ -289,7 +299,7 @@
                   var newCouple = new game.Couple({
                       id: 'couple' + (now),
                       sprite: coupleSprite,
-                      interval: 500,
+                      interval: interval,
                       life: life,
                       startX: this.coupleMinX + (this.coupleMaxX - this.coupleMinX) * Math.random(), //随机选取一个位置
                       startY: this.coupleMinY + (this.coupleMaxY - this.coupleMinY) * Math.random(),
@@ -307,12 +317,27 @@
 
                       if (newCouple.life > 0) {
                           newCouple.life -= 1;
+                          if(life == 2){  //是红色情侣被击中
+                            newCouple.addFrame(coupleBreakSprite, 0);
+                            newCouple.setFrameCallback(1, function() {
+                                newCouple.addFrame(coupleSprite_r, 0);
+                                newCouple.setFrameCallback(1, null);
+                            });
+                          }
                       }
                       if (newCouple.life == 0) {
-                          newCouple.addFrame(coupleBreakSprite, 0);
+                        if(life == 2){
+                          newCouple.addFrame(coupleBreakSprite_r, 0);
                           newCouple.setFrameCallback(2, function() {
                               that.gameScene.removeChild(this); //把情侣从 gameScene 上删掉; 删除时间，用帧来控制，播放完就删
                           });
+                        }
+                        else{
+                          newCouple.addFrame(coupleBreakSprite, 0);
+                          newCouple.setFrameCallback(3, function() {
+                              that.gameScene.removeChild(this); //把情侣从 gameScene 上删掉; 删除时间，用帧来控制，播放完就删
+                          });
+                        }
                       }
                       newCouple.getReady();
 

@@ -31,8 +31,6 @@ var Asset = ns.Asset = Hilo.Class.create({
             {id:'ground1', src:'images/game/ground1.png'},
             {id:'ground2', src:'images/game/ground2.png'},
             {id:'hentai', src:'images/game/hentai.png'},
-            {id:'milk1', src:'images/game/milk1.png'},
-            {id:'milk2', src:'images/game/milk2.png'},
 
             {id:'levelImage1', src:'images/over/lv1.png'},
             {id:'levelImage2', src:'images/over/lv2.png'},
@@ -68,8 +66,6 @@ var Asset = ns.Asset = Hilo.Class.create({
         this.countdown = this.queue.get('countdown').content;
         this.ground1 = this.queue.get('ground1').content;
         this.ground2 = this.queue.get('ground2').content;
-        this.milk1 = this.queue.get('milk1').content;
-        this.milk2 = this.queue.get('milk2').content;
         this.replayBtn = this.queue.get('replayBtn').content;
         this.shareBtn = this.queue.get('shareBtn').content;
         this.closeBtn = this.queue.get('closeBtn').content;
@@ -86,7 +82,7 @@ var Asset = ns.Asset = Hilo.Class.create({
                     ],
             sprites: {
                 couple: [0, 1],
-                couple_break: [2, 3, 3]
+                couple_break: [2, 2, 3, 3]
             }
         });
         this.couple_b_2 = new Hilo.TextureAtlas({
@@ -98,7 +94,7 @@ var Asset = ns.Asset = Hilo.Class.create({
                     ],
             sprites: {
                 couple: [0, 1],
-                couple_break: [2, 3, 3]
+                couple_break: [2, 2, 3, 3]
             }
         });
         this.couple_b_3 = new Hilo.TextureAtlas({
@@ -110,7 +106,7 @@ var Asset = ns.Asset = Hilo.Class.create({
                     ],
             sprites: {
                 couple: [0, 1],
-                couple_break: [2, 3, 3]
+                couple_break: [2, 2, 3, 3]
             }
         });
         this.couple_r_1 = new Hilo.TextureAtlas({
@@ -119,10 +115,16 @@ var Asset = ns.Asset = Hilo.Class.create({
                      [256, 0, 256, 400],
                      [512, 0, 256, 400],
                      [768, 0, 256, 400],
+                     [1024, 0, 256, 400],
+                     [1280, 0, 256, 400],
+                     [1536, 0, 256, 400],
+                     [1792, 0, 256, 400],
                     ],
             sprites: {
                 couple: [0, 1],
-                couple_break: [2, 3, 3]
+                couple_break: [2, 3],
+                couple_r: [4, 5],
+                couple_r_break: [6, 7, 7],
             }
         });
         this.couple_r_2 = new Hilo.TextureAtlas({
@@ -131,10 +133,16 @@ var Asset = ns.Asset = Hilo.Class.create({
                      [256, 0, 256, 400],
                      [512, 0, 256, 400],
                      [768, 0, 256, 400],
+                     [1024, 0, 256, 400],
+                     [1280, 0, 256, 400],
+                     [1536, 0, 256, 400],
+                     [1792, 0, 256, 400],
                     ],
             sprites: {
                 couple: [0, 1],
-                couple_break: [2, 3, 3]
+                couple_break: [2, 3],
+                couple_r: [4, 5],
+                couple_r_break: [6, 7, 7],
             }
         });
         this.couple_r_3 = new Hilo.TextureAtlas({
@@ -143,10 +151,16 @@ var Asset = ns.Asset = Hilo.Class.create({
                      [256, 0, 256, 400],
                      [512, 0, 256, 400],
                      [768, 0, 256, 400],
+                     [1024, 0, 256, 400],
+                     [1280, 0, 256, 400],
+                     [1536, 0, 256, 400],
+                     [1792, 0, 256, 400],
                     ],
             sprites: {
                 couple: [0, 1],
-                couple_break: [2, 3, 3]
+                couple_break: [2, 3],
+                couple_r: [4, 5],
+                couple_r_break: [6, 7, 7],
             }
         });
 
