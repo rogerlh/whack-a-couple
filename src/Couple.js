@@ -5,7 +5,8 @@ var Couple = ns.Couple = Hilo.Class.create({
     Extends: Hilo.Sprite,
     constructor: function(properties){
         Couple.superclass.constructor.call(this, properties);
-        this.addFrame(properties.atlas.getSprite('couple'));
+        // this.addFrame(properties.atlas.getSprite('couple'));
+        this.addFrame(properties.sprite);
         this.setFrameCallback(3, properties.callbackFun);
         this.x = properties.startX;
         this.y = properties.startY;
