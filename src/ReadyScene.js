@@ -51,10 +51,12 @@ var ReadyScene = ns.ReadyScene = Hilo.Class.create({
             rect: [0, 0, 161, 58]
         });
 
-        // var launchCouple = new Hilo.Sprite({
-        //     id: 'launchCouple'
-        // });
-        // launchCouple.addFrame(properties.couple1_1_black.getSprite('couple'));
+        var launchCouple = new Hilo.Sprite({
+            id: 'launchCouple',
+            timeBased: true,
+            interval: 500
+        });
+        launchCouple.addFrame(properties.couple1_1_black.getSprite('couple'));
 
         hentai.x = (this.width - hentai.width) / 2;
         hentai.y = this.height - hentai.height;
@@ -65,11 +67,14 @@ var ReadyScene = ns.ReadyScene = Hilo.Class.create({
 
         // 按钮提示文字
         buttonTip.x = (this.width - buttonTip.width) / 2;
-        buttonTip.y = startBtn.y - buttonTip.height - 50;
+        buttonTip.y = startBtn.y - buttonTip.height - 20;
+
+        launchCouple.x = (this.width - launchCouple.width) / 2;
+        launchCouple.y = buttonTip.y - launchCouple.height - 40;
 
         Hilo.Tween.to(buttonTip, {y: buttonTip.y - 5}, {duration:600, loop:true});
 
-        this.addChild(startBtn, ground1, ground2, logo, hentai, buttonTip);
+        this.addChild(startBtn, ground1, ground2, logo, hentai, buttonTip, launchCouple);
     }
 });
 

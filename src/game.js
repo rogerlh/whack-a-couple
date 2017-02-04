@@ -107,6 +107,7 @@ var game = window.game = {
             logo: this.asset.logo,
             hentai: this.asset.hentai,
             buttonTip: this.asset.buttonTip,
+            couple1_1_black: this.asset.couple1_1_black,
             visible: false  //开始界面在动画播放完之前是隐藏的
         }).addTo(this.stage);
 
