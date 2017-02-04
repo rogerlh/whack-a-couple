@@ -20,47 +20,40 @@ var GameScene = ns.GameScene = Hilo.Class.create({
 
         var hentai = new Hilo.Bitmap({
             image: properties.hentai,
-            rect: [0, 0, 640, 1000]
+            rect: [0, 0, 256, 276]
         });
 
         var countdown = new Hilo.Bitmap({
             image: properties.countdown,
-            rect: [0, 0, 141, 67]
+            rect: [0, 0, 282, 134]
         });
 
-        var secondsText = new Hilo.BitmapText({
-            scaleX: 0.5,
-            scaleY: 0.5,
-            text: 60
-        }).addTo(this);
+        var logo = new Hilo.Bitmap({
+            image: properties.logo,
+            rect: [0, 0, 189, 45]
+        });
 
-        var second = 60;
-        var interval;
-
-        interval = setInterval(function(){
-            if (second > 0) {
-                second--;
-            } else if (second <= 0) {
-                clearInterval(interval);
-                this.gameOver(); // 倒计时结束, 结束游戏
-            }
-        }, 1000);
+        countdown.x = 359;
+        countdown.y = 0;
 
         //放置ground的位置
         ground1.x = 0;
         ground1.y = 0;
-        ground2.x = 532;
+        ground2.x = this.width - ground2.width;
         ground2.y = 0;
+
         //放置hentai的大小和位置
-        hentai.scaleX = 0.8;
-        hentai.scaleY = 0.8;
+        // hentai.scaleX = 0.8;
+        // hentai.scaleY = 0.8;
         hentai.x = (this.width - hentai.width * hentai.scaleX) / 2;
         hentai.y = this.height - hentai.height * hentai.scaleY;
+
         //街道循环的动画
         // Hilo.Tween.to(ground, {y:-2}, {duration:200, loop:true});
+
         //hentai左右晃动的动画
         Hilo.Tween.to(hentai, {x: hentai.x - 10}, {duration:400, reverse:true, loop:true});
-        this.addChild(ground1, ground2, hentai, countdown, secondsText);
+        this.addChild(ground1, ground2, hentai, countdown, logo);
     }
 });
 

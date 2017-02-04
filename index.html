@@ -1,30 +1,55 @@
 <!doctype html>
 <head>
-<title>storybook: whack-a-couple</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="user-scalable=no, initial-scale=1.0, minimum-scale=1, maximum-scale=1" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-<!-- <link rel="apple-touch-icon" href="images/icon.png"/>
-<link rel="apple-touch-startup-image" href="images/icon.png" /> -->
+    <title>storybook: whack-a-couple</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, minimum-scale=1, maximum-scale=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- <link rel="apple-touch-icon" href="images/icon.png"/>
+    <link rel="apple-touch-startup-image" href="images/icon.png" /> -->
 
-<style type="text/css">
-body, div, canvas{
-    image-rendering: auto;
-    -webkit-image-rendering: auto;
-    -webkit-interpolation-mode: nearest-neighbor;
-}
-body{padding:0; margin:0; font-size:12px; background-color:#fff;}
-body, html{height:100%;}
-</style>
+    <style>
+        @font-face {
+            font-family: "youyuan";
+            src: url("fonts/youyuan.eot"); /* IE9 */
+            src: url("fonts/youyuan.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
 
-<script type="text/javascript" src="src/hilo-standalone.min.js"></script>
-<script type="text/javascript" src="src/game.js"></script>
-<script type="text/javascript" src="src/Asset.js"></script>
-<script type="text/javascript" src="src/ReadyScene.js"></script>
-<script type="text/javascript" src="src/GameScene.js"></script>
-<script type="text/javascript" src="src/Opening.js"></script>
-<script type="text/javascript" src="src/Couple.js"></script>
+            url("fonts/youyuan.woff") format("woff"), /* chrome、firefox */
+            url("fonts/youyuan.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+
+            url("fonts/youyuan.svg#youyuan") format("svg"); /* iOS 4.1- */
+            font-style: normal;
+            font-weight: normal;
+        }
+
+        body, div, canvas {
+            image-rendering: auto;
+            -webkit-image-rendering: auto;
+            -webkit-interpolation-mode: nearest-neighbor;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            font-size: 12px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body, html {
+            height: 100%;
+        }
+    </style>
+
+    <script src="src/hilo-standalone.min.js"></script>
+    <script src="src/game.js"></script>
+    <script src="src/Asset.js"></script>
+    <script src="src/ReadyScene.js"></script>
+    <script src="src/GameScene.js"></script>
+    <script src="src/Opening.js"></script>
+    <script src="src/Couple.js"></script>
     <script src="src/OverScene.js"></script>
 </head>
 
