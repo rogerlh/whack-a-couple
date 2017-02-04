@@ -109,6 +109,7 @@
                 logo: this.asset.logo,
                 hentai: this.asset.hentai,
                 buttonTip: this.asset.buttonTip,
+                couple_b_1: this.asset.couple_b_1,
                 visible: false //开始界面在动画播放完之前是隐藏的
             }).addTo(this.stage);
 
@@ -193,13 +194,27 @@
                 window.href = '#';
             }.bind(this));
 
+
             // 声效
-            //TODO: 区分不同等级的声音
-            this.hitSound = Hilo.WebSound.getAudio({
+            var sound1 = Hilo.WebSound.getAudio({
                 src: 'audio/hit1.mp3',
                 loop: false,
                 volume: 1
             });
+
+            var sound2 = Hilo.WebSound.getAudio({
+                src: 'audio/hit2.mp3',
+                loop: false,
+                volume: 1
+            });
+
+            var sound3 = Hilo.WebSound.getAudio({
+                src: 'audio/hit3.mp3',
+                loop: false,
+                volume: 1
+            });
+
+            this.hitSound = [sound1, sound2, sound3];
         },
 
         onUpdate: function(delta) {
@@ -284,7 +299,10 @@
 
                   newCouple.on(Hilo.event.POINTER_START, function(e) { //加进舞台里并绑定点击事件
                       e._stopped = true;
-                      this.hitSound.play(); // 播放声效
+
+                      var ran = parseInt(Math.random() * 3); // 用于随机选择不同声效
+                      this.hitSound[ran].play(); // 播放声效
+
                       this.score += 1; //加1得分
 
                       if (newCouple.life > 0) {

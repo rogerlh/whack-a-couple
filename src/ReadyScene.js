@@ -12,16 +12,17 @@ var ReadyScene = ns.ReadyScene = Hilo.Class.create({
 
         var ground1 = new Hilo.Bitmap({
             image: properties.ground1,
-            rect: [0, 0, 131, 1000],
+            rect: [0, 0, 80, 1000],
             x: 0,
             y: 0
         });
         var ground2 = new Hilo.Bitmap({
             image: properties.ground2,
-            rect: [0, 0, 108, 1000],
-            x: 532,
+            rect: [0, 0, 80, 1000],
             y: 0
         });
+
+        ground2.x = this.width - ground2.width;
 
         var logo = new Hilo.Bitmap({
             image: properties.logo,
@@ -56,7 +57,7 @@ var ReadyScene = ns.ReadyScene = Hilo.Class.create({
             timeBased: true,
             interval: 500
         });
-        launchCouple.addFrame(properties.couple1_1_black.getSprite('couple'));
+        launchCouple.addFrame(properties.couple_b_1.getSprite('couple'));
 
         hentai.x = (this.width - hentai.width) / 2;
         hentai.y = this.height - hentai.height;
@@ -72,7 +73,7 @@ var ReadyScene = ns.ReadyScene = Hilo.Class.create({
         launchCouple.x = (this.width - launchCouple.width) / 2;
         launchCouple.y = buttonTip.y - launchCouple.height - 40;
 
-        Hilo.Tween.to(buttonTip, {y: buttonTip.y - 5}, {duration:600, loop:true});
+        Hilo.Tween.to(buttonTip, {y: buttonTip.y - 5}, {duration:600, reverse:true, loop:true});
 
         this.addChild(startBtn, ground1, ground2, logo, hentai, buttonTip, launchCouple);
     }
