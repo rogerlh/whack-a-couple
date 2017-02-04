@@ -344,7 +344,12 @@
                   }.bind(this));
 
                   Hilo.Tween.remove(newCouple);
-                  this.removeCouple(newCouple, timeout); // 移除情侣
+                  setTimeout(function () {
+                    if (newCouple.life > 0) { //只有情侣没被打死前，才用定时来控制消失
+                    that.gameScene.removeChild(newCouple);
+                    that.stage.removeChild(newCouple);
+                  }
+                }, timeout * 1000);
               }
 
 
@@ -421,17 +426,14 @@
             return this.score;
         },
 
-        removeCouple: async function(newCouple, timeout) {
-            await this.sleep(timeout * 1000);
-              if (newCouple.life > 0) { //只有情侣没被打死前，才用定时来控制消失
-              this.gameScene.removeChild(newCouple);
-              this.stage.removeChild(newCouple);
-            }
-        },
-
-        sleep: function(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
+        // removeCouple: async function(newCouple, timeout) {
+        //     await this.sleep(timeout * 1000);
+        //
+        // },
+        //
+        // sleep: function(ms) {
+        //     return new Promise(resolve => setTimeout(resolve, ms));
+        // }
     };
 
 })();
