@@ -14,12 +14,9 @@ var Asset = ns.Asset = Hilo.Class.create({
     hentai: null,
     milk1: null,
     milk2: null,
-    couple1: null,
-    couple1_break: null,
-    couple2: null,
-    couple2_break: null,
-    couple3: null,
-    couple3_break: null,
+    couple1_black: null,
+    couple2_black: null,
+    couple3_black: null,
 
     load: function(){
         var resources = [
@@ -69,6 +66,7 @@ var Asset = ns.Asset = Hilo.Class.create({
         this.ground2 = this.queue.get('ground2').content;
         this.milk1 = this.queue.get('milk1').content;
         this.milk2 = this.queue.get('milk2').content;
+        this.hentai = this.queue.get('hentai').content;
 
         this.replayBtn = this.queue.get('replayBtn').content;
         this.shareBtn = this.queue.get('shareBtn').content;
@@ -81,50 +79,39 @@ var Asset = ns.Asset = Hilo.Class.create({
             image: this.queue.get('couple1_1_black').content,
             frames: [[0, 0, 256, 400],
                      [256, 0, 256, 400],
+                     [512, 0, 256, 400],
+                     [768, 0, 256, 400],
                     ],
             sprites: {
-                couple: [0, 1, 0, 1]
+                couple: [0, 1, 0, 1],
+                couple_break: [2, 2, 3, 3]
             }
         });
-        this.couple1_2_black = new Hilo.TextureAtlas({
-            image: this.queue.get('couple1_2_black').content,
-            frames: [[0, 0, 256, 400]],
-            sprites: {
-                couple: [0, 0, 0, 0]
-            }
-        });
-        this.couple2_1_black = new Hilo.TextureAtlas({
-            image: this.queue.get('couple2_1_black').content,
+        this.couple2_black = new Hilo.TextureAtlas({
+            image: this.queue.get('couple2_black').content,
             frames: [[0, 0, 256, 400],
-                     [256, 0, 256, 400]
+                     [256, 0, 256, 400],
+                     [512, 0, 256, 400],
+                     [768, 0, 256, 400],
                     ],
             sprites: {
-                couple: [0, 1, 0, 1]
+                couple: [0, 1, 0, 1],
+                couple_break: [2, 2, 3, 3]
             }
         });
-        this.couple2_2_black = new Hilo.TextureAtlas({
-            image: this.queue.get('couple2_2_black').content,
-            frames: [[0, 0, 256, 400]],
-            sprites: {
-                couple: [0, 0, 0, 0]
-            }
-        });
-        this.couple3_1_black = new Hilo.TextureAtlas({
-            image: this.queue.get('couple3_1_black').content,
+        this.couple3_black = new Hilo.TextureAtlas({
+            image: this.queue.get('couple3_black').content,
             frames: [[0, 0, 256, 400],
-                     [256, 0, 256, 400]
+                     [256, 0, 256, 400],
+                     [512, 0, 256, 400],
+                     [768, 0, 256, 400],
                     ],
             sprites: {
-                couple: [0, 1, 0, 1]
+                couple: [0, 1, 0, 1],
+                couple_break: [2, 2, 3, 3]
             }
         });
-        this.couple3_2_black = new Hilo.TextureAtlas({
-            image: this.queue.get('couple3_2_black').content,
-            frames: [[0, 0, 256, 400]],
-            sprites: {
-                couple: [0, 0, 0, 0]
-            }
-        });
+
         this.openingAtlas = new Hilo.TextureAtlas({
             image: this.queue.get('opening').content,
             frames: [

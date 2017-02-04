@@ -213,17 +213,17 @@ var game = window.game = {
 
           if((now) - this.oldTime >= 500){    //0.5秒出现一个
             var ran = parseInt(Math.random() * 3);
-            var atlas = null;
-            var break_atlas = null;
+            var coupleSprite = null;
+            var coupleBreakSprite = null;
             if(ran == 0){
-              atlas = this.asset.couple1_1_black;
-              break_atlas = this.asset.couple1_2_black;
+              coupleSprite = this.asset.couple1_black.getSprite('couple');
+              coupleBreakSprite = this.asset.couple1_black.getSprite('couple_break');
             }else if (ran == 1){
-              atlas = this.asset.couple2_1_black;
-              break_atlas = this.asset.couple2_2_black;
+              coupleSprite = this.asset.couple2_black.getSprite('couple');
+              coupleBreakSprite = this.asset.couple2_black.getSprite('couple_break');
             }else{
-              atlas = this.asset.couple3_1_black;
-              break_atlas = this.asset.couple3_2_black;
+              coupleSprite = this.asset.couple3_black.getSprite('couple');
+              coupleBreakSprite = this.asset.couple3_black.getSprite('couple_break');
             }
             var newCouple = new game.Couple({
                 id: 'couple' + (+now),
@@ -249,8 +249,8 @@ var game = window.game = {
                 if(newCouple.life > 0){
                   newCouple.life -= 1;
                 }
-                if(newCouple.life <= 0){
-                  newCouple.addFrame(break_atlas.getSprite('couple'), 0); //把break加到最开始的帧
+                if(newCouple.life == 0){
+                  newCouple.addFrame(coupleBreakSprite);
                 }
 
                 newCouple.getReady();
