@@ -32,6 +32,15 @@ var Asset = ns.Asset = Hilo.Class.create({
             {id:'hentai', src:'images/game/hentai.png'},
             {id:'milk1', src:'images/game/milk1.png'},
             {id:'milk2', src:'images/game/milk2.png'},
+
+            {id:'levelImage1', src:'images/over/lv1.png'},
+            {id:'levelImage2', src:'images/over/lv2.png'},
+            {id:'levelImage3', src:'images/over/lv3.png'},
+
+            {id:'replayBtn', src:'images/over/btn-replay.png'},
+            {id:'shareBtn', src:'images/over/btn-share.png'},
+            {id:'close', src:'images/over/close.png'},
+            {id:'sharePanel', src:'images/over/share-panel.png'},
             {id:'couple1_1_black', src:'images/couple/black/couple1_1.png'},
             {id:'couple1_2_black', src:'images/couple/black/couple1_2.png'},
             {id:'couple2_1_black', src:'images/couple/black/couple2_1.png'},
