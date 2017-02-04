@@ -20,7 +20,7 @@
         coupleMaxX: 0,
         coupleMinX: 0,
         seconds: 0, //倒计时, 秒数设置在 gameStart() 里
-        gameTime: 10, //游戏时间
+        gameTime: 60, //游戏时间
         secondsText: null,
 
         gameReadyScene: null, //开始界面
