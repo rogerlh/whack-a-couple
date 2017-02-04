@@ -43,8 +43,8 @@ var GameScene = ns.GameScene = Hilo.Class.create({
         ground2.y = 0;
 
         //放置hentai的大小和位置
-        // hentai.scaleX = 0.8;
-        // hentai.scaleY = 0.8;
+        hentai.scaleX = 0.8;
+        hentai.scaleY = 0.8;
         hentai.x = (this.width - hentai.width * hentai.scaleX) / 2;
         hentai.y = this.height - hentai.height * hentai.scaleY;
 

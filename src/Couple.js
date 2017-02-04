@@ -5,16 +5,14 @@ var Couple = ns.Couple = Hilo.Class.create({
     Extends: Hilo.Sprite,
     constructor: function(properties){
         Couple.superclass.constructor.call(this, properties);
-        // this.addFrame(properties.atlas.getSprite('couple'));
         this.addFrame(properties.sprite);
-        this.setFrameCallback(3, properties.callbackFun);
         this.x = properties.startX;
         this.y = properties.startY;
         this.timeBased = true;
-        this.interval = properties.interval;  //用来计时消失....
+        this.interval = properties.interval;
         this.life = properties.life;
-        // this.scaleX = 0.7;
-        // this.scaleY = 0.7;
+        this.scaleX = 0.7;
+        this.scaleY = 0.7;
     },
 
     getReady: function(){
