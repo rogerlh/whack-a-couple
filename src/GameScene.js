@@ -56,8 +56,8 @@ var GameScene = ns.GameScene = Hilo.Class.create({
         Hilo.Tween.to(ground2, {y: -1000}, {duration: 5000, loop:true});
 
         //hentai左右晃动的动画
-        Hilo.Tween.to(hentai, {x: hentai.x - 10}, {duration:400, reverse:true, loop:true});
-        Hilo.Tween.to(hentai, {rotation: 2}, {duration:400, reverse:true, loop:true});
+        Hilo.Tween.to(hentai, {x: hentai.x - 15}, {duration:400, reverse:true, loop:true});
+        //Hilo.Tween.to(hentai, {rotation: 2}, {duration:400, reverse:true, loop:true});
         this.addChild(ground1, ground2, hentai, countdown, logo);
     }
 });
