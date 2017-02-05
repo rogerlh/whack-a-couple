@@ -2,8 +2,8 @@
 <head>
     <title>storybook: whack-a-couple</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport"
-          content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <!--<meta name="viewport"-->
+          <!--content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>-->
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <!-- <link rel="apple-touch-icon" href="images/icon.png"/>
@@ -18,12 +18,12 @@
         if (/Android (\d+\.\d+)/.test(ua)){
             var version = parseFloat(RegExp.$1);
             if(version>2.3){
-                document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+                document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+'">');
             }else{
-                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+                document.write('<meta name="viewport" content="width=640">');
             }
         } else {
-            document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+            document.write('<meta name="viewport" content="width=640, user-scalable=no">');
         }
 
         // 固定网页
