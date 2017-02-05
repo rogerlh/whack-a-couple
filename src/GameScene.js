@@ -48,7 +48,7 @@ var GameScene = ns.GameScene = Hilo.Class.create({
         //放置hentai的大小和位置
         hentai.scaleX = 0.8;
         hentai.scaleY = 0.8;
-        hentai.x = (this.width - hentai.width * hentai.scaleX) / 2;
+        hentai.x = (this.width - hentai.width * hentai.scaleX) / 2 + 100;
         hentai.y = this.height - hentai.height * hentai.scaleY;
 
         //街道循环的动画
@@ -56,8 +56,8 @@ var GameScene = ns.GameScene = Hilo.Class.create({
         Hilo.Tween.to(ground2, {y: -1000}, {duration: 5000, loop:true});
 
         //hentai左右晃动的动画
-        Hilo.Tween.to(hentai, {x: hentai.x - 15}, {duration:400, reverse:true, loop:true});
-        //Hilo.Tween.to(hentai, {rotation: 2}, {duration:400, reverse:true, loop:true});
+        Hilo.Tween.to(hentai, {x: hentai.x - 200}, {duration:800, reverse:true, loop:true});
+        Hilo.Tween.to(hentai, {rotation: 2}, {duration:400, reverse:true, loop:true});
         this.addChild(ground1, ground2, hentai, countdown, logo);
     }
 });

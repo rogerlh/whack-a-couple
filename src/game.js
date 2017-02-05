@@ -20,7 +20,7 @@
         coupleMaxX: 0,
         coupleMinX: 0,
         seconds: 0, //倒计时, 秒数设置在 gameStart() 里
-        gameTime: 60, //游戏时间
+        gameTime: 20, //游戏时间
         secondsText: null,
 
         gameReadyScene: null, //开始界面
@@ -40,10 +40,9 @@
         },
 
         initStage: function() {
-            //TODO: 改为网页的实际大小
             this.width = 640;
-            this.height = 1000;
-            this.scale = 0.5;
+            this.height = window.innerHeight;
+            this.scale = 1;
 
             //舞台
             this.stage = new Hilo.Stage({
@@ -73,7 +72,7 @@
             this.initScenes();
 
             //计算情侣出现位置的极限
-            this.coupleMaxY = this.height - 200 - 160;
+            this.coupleMaxY = this.height - 220 - 240;
             this.coupleMinY = 0;
             this.coupleMaxX = this.width - 50 - 180;
             this.coupleMinX = 50;
@@ -90,7 +89,6 @@
                 startY: 0,
                 callbackFun: function() {
                     that.opening.visible = false;
-                    // this.tween = Hilo.Tween.to(this, {scaleX: 0.7, scaleY: 0.7, y: this.y + this.height * 0.3 }, {duration:400, loop:false});
                     that.gameReadyScene.visible = true;
                 }
             }).addTo(this.stage);

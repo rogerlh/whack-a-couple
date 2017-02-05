@@ -11,7 +11,7 @@
 
 
             var scoreTip = this.scoreTip = new Hilo.Text({
-                width: this.width,
+                width: 640,
                 height: 37,
                 x: 66,
                 y: 88,
@@ -22,7 +22,7 @@
             //玩家分数
             var scoreLabel = this.scoreLabel = new Hilo.Text({
                 id: 'scoreLabel',
-                width: this.width,
+                width: 640,
                 height: 50,
                 x: 66,
                 y: scoreTip.y + scoreTip.height + 10,
@@ -31,7 +31,7 @@
             scoreLabel.setFont('45px youyuan, sans-serif');
 
             var scoreTipBottom = this.scoreTipBottom = new Hilo.Text({
-                width: this.width,
+                width: 640,
                 height: 37,
                 x: 66,
                 y: scoreLabel.y + scoreLabel.height + 10,
@@ -53,7 +53,7 @@
                 id: 'shareBtn',
                 image: properties.shareBtn,
                 upState: {rect: [0, 0, 235, 102]},
-                downState: {rect: [235, 0, 235, 102]},
+                // downState: {rect: [235, 0, 235, 102]},
                 width: 235,
                 height: 102,
                 x: 66,
@@ -65,7 +65,7 @@
                 id: 'replayBtn',
                 image: properties.replayBtn,
                 upState: {rect: [0, 0, 235, 102]},
-                downState: {rect: [235, 0, 235, 102]},
+                // downState: {rect: [235, 0, 235, 102]},
                 width: 235,
                 height: 102
             });
