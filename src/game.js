@@ -20,13 +20,14 @@
         coupleMaxX: 0,
         coupleMinX: 0,
         seconds: 0, //倒计时, 秒数设置在 gameStart() 里
-        gameTime: 5, //游戏时间
+        gameTime: 60, //游戏时间
         secondsText: null,
 
         gameReadyScene: null, //开始界面
         gameScene: null, //游戏界面
         gameOverScene: null, //结束界面
         opening: null, //开场动画
+        hentai_sprite: null, //活动的hentai
 
         hitSound: null, // 点击情侣的声效
 
@@ -123,11 +124,22 @@
                 background: '#FBD1D2',
                 ground1: this.asset.ground1,
                 ground2: this.asset.ground2,
-                hentai: this.asset.hentai,
                 countdown: this.asset.countdown,
                 logo: this.asset.logo,
                 visible: false
             }).addTo(this.stage);
+
+            this.hentai_sprite = new game.Hentai({
+              id: 'hentai',
+              sprite: this.asset.hentai_sprite.getSprite('hentai'),
+              interval: 500,
+              sceneWidth: this.gameScene.width,
+              sceneHeight: this.gameScene.height,
+            }).addTo(this.gameScene);
+            this.hentai_sprite.goto(0, true);
+            //hentai左右晃动的动画
+            Hilo.Tween.to(this.hentai_sprite, {x: this.hentai_sprite.x - 200}, {duration:800, reverse:true, loop:true});
+            Hilo.Tween.to(this.hentai_sprite, {rotation: 2}, {duration:400, reverse:true, loop:true});
 
             //结束场景
             this.gameOverScene = new game.OverScene({
@@ -293,22 +305,31 @@
                 var interval = 250;
                 var frequency = 0;
 
-                if (this.gameTime - this.seconds <= this.gameTime / 6) { //第一阶段
+                if (this.gameTime - this.seconds <= this.gameTime / 12) { //第一阶段
+                  frequency = 500;
+                  timeout = 3;
+                }else if (this.gameTime - this.seconds > this.gameTime / 12 && this.gameTime - this.seconds <= this.gameTime / 6) { //第二阶段
+                  frequency = 333;
+                  timeout = 3;
+                }else if (this.gameTime - this.seconds > this.gameTime / 6 && this.gameTime - this.seconds <= this.gameTime / 3) { //第三阶段
+                  frequency = 250;
+                  timeout = 2;
+                }else if (this.gameTime - this.seconds > this.gameTime / 3 && this.gameTime - this.seconds <= this.gameTime / 2) { //第四阶段
                   frequency = 200;
-                }else if (this.gameTime - this.seconds > this.gameTime / 6 && this.gameTime - this.seconds <= this.gameTime / 2) { //第二阶段
-                  frequency = 166;
-                }else if (this.gameTime - this.seconds > this.gameTime / 2 && this.gameTime - this.seconds <= this.gameTime / 1.2) { //第三阶段
-                  frequency = 142;
-                }else { //第四阶段
-                  frequency = 125;
+                  timeout = 2;
+                }else if (this.gameTime - this.seconds > this.gameTime / 2 && this.gameTime - this.seconds <= this.gameTime / 1.2) { //第五阶段
+                  frequency = 200;
+                  timeout = 1.5;
+                }else { //第六阶段
+                  frequency = 167;
+                  timeout = 1.5;
                 }
 
                 //随机算法
-                if (this.gameTime - this.seconds <= this.gameTime / 2) { //第一和第二阶段
+                if (this.gameTime - this.seconds <= this.gameTime / 2) { //第1至4阶段
                     if ((now) - this.lastTime >= frequency) { //1s出现一个
                         this.lastTime = now;
                         life = 1; //生产普通情侣
-                        timeout = 1; //1s后消失
                         var ran = parseInt(Math.random() * 3);
                         if (ran == 0) {
                             coupleSprite = this.asset.couple_b_1.getSprite('couple');
@@ -322,10 +343,9 @@
                         }
                         createFlag = 1;
                     }
-                } else { //第三和第四阶段
-                    if ((now) - this.lastTime >= frequency) { //0.5s出现一个
+                } else { //第五至六阶段
+                    if ((now) - this.lastTime >= frequency) {
                         this.lastTime = now;
-                        timeout = 0.5; //0.5s后消失
                         var ran = parseInt(Math.random() * 10);
                         if (ran <= 6) {
                             life = 1; //生产普通情侣
@@ -381,6 +401,10 @@
 
                       var ran = parseInt(Math.random() * 3); // 用于随机选择不同声效
                       this.hitSound[ran].play(); // 播放声效
+                      this.hentai_sprite.goto(1, false);
+                      this.hentai_sprite.setFrameCallback(2, function() {
+                          that.hentai_sprite.goto(0, true);
+                      });
 
                       this.score += 1; //加1得分
 
