@@ -28,7 +28,7 @@ var GameScene = ns.GameScene = Hilo.Class.create({
 
         var countdown = new Hilo.Bitmap({
             image: properties.countdown,
-            rect: [0, 0, 282, 134]
+            rect: [0, 0, 188, 90],
         });
 
         var logo = new Hilo.Bitmap({
@@ -36,7 +36,7 @@ var GameScene = ns.GameScene = Hilo.Class.create({
             rect: [0, 0, 189, 45]
         });
 
-        countdown.x = 359;
+        countdown.x = this.width - countdown.width;
         countdown.y = 0;
 
         //放置ground的位置
@@ -49,7 +49,7 @@ var GameScene = ns.GameScene = Hilo.Class.create({
         hentai.scaleX = 0.8;
         hentai.scaleY = 0.8;
         hentai.x = (this.width - hentai.width * hentai.scaleX) / 2 + 100;
-        hentai.y = this.height - hentai.height * hentai.scaleY;
+        hentai.y = this.height - hentai.height * hentai.scaleY + 10;
 
         //街道循环的动画
         Hilo.Tween.to(ground1, {y: -1000}, {duration: 5000, loop:true});

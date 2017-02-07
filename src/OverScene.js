@@ -76,6 +76,7 @@
                 id: 'shareContainer',
                 width: this.width,
                 height: this.height,
+                background: '#3F3F3F',
                 visible: false
             });
 
@@ -121,16 +122,16 @@
 
         show: function(score){
             this.scoreLabel.text = '拆散了' + score + '对情侣';
-            document.title = '我' + this.scoreLabel.text; // 更改网页标题以便分享
 
             var imageSrc;
 
-            if (score <= 10) {
+            if (score <= 100) {
                 imageSrc = 'images/over/lv1.png'; // 等级一
 
                 this.scoreTip.text = '我用微弱的力量';
                 this.scoreTipBottom.text = '可累死我了，单身的过来抱紧。'
-            } else if (score > 10 && score <= 20) {
+
+            } else if (score > 100 && score <= 250) {
                 imageSrc = 'images/over/lv2.png'; // 等级二
 
                 this.scoreTip.text = '我实力';
@@ -142,6 +143,7 @@
                 this.scoreTipBottom.text = '明天就可能被人追杀，快保护我。'
             }
 
+            document.title = this.scoreTip.text + this.scoreLabel.text + this.scoreTipBottom.text;  // 更改网页标题以便分享
             this.levelImage.setImage(imageSrc);
         }
     });

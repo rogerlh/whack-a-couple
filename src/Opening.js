@@ -27,6 +27,7 @@ var Opening = ns.Opening = Hilo.Class.create({
         this.rotation = 0;
         this.interval = 8;
         this.loop = false;
+        this.background = '#fff';
         this.play();
     },
 

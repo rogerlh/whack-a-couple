@@ -84,6 +84,9 @@
             var that = this;
             this.opening = new game.Opening({
                 id: 'opening',
+                width: this.width,
+                // height: this.height,
+                background: '#fff',
                 atlas: this.asset.openingAtlas,
                 startX: 0,
                 startY: 0,
@@ -101,6 +104,7 @@
                 id: 'gameReadyScene',
                 width: this.width,
                 height: this.height,
+                background: '#FBD1D2',
                 startBtn: this.asset.startBtn,
                 ground1: this.asset.ground1,
                 ground2: this.asset.ground2,
@@ -116,6 +120,7 @@
                 id: 'gameScene',
                 width: this.width,
                 height: this.height,
+                background: '#FBD1D2',
                 ground1: this.asset.ground1,
                 ground2: this.asset.ground2,
                 hentai: this.asset.hentai,
@@ -129,6 +134,7 @@
                 id: 'gameOverScene',
                 width: this.width,
                 height: this.height,
+                background: '#FBD1D2',
                 replayBtn: this.asset.replayBtn,
                 shareBtn: this.asset.shareBtn,
                 sharePanel: this.asset.sharePanel,
@@ -138,30 +144,66 @@
                 visible: false
             }).addTo(this.stage);
 
+            var countdownContainer = new Hilo.Container({
+                id: 'countdownContainer',
+                width: 135,
+                height: 40,
+                x: this.width - 135 - 20,
+                y: 24
+            }).addTo(this.gameScene);
+
+
+            var countdownTip = new Hilo.Text({
+                id: 'countdownTip',
+                color: '#EF3331',
+                width: 60,
+                height: 40,
+                // x: this.secondsText.x - 20,
+                y: 10,
+                text: '倒计时'
+            }).addTo(countdownContainer);
+
+            countdownTip.setFont('20px youyuan, sans-serif');
+
 
             // 倒计时时间
             this.secondsText = new Hilo.Text({
                 id: 'secondsText',
                 color: '#EF3331',
                 width: 120,
-                height: 65,
-                x: this.width - 35 - 120,
-                y: 24,
+                height: 40,
+                x: countdownTip.x + countdownTip.width + 5,
+                y: -2,
                 text: this.seconds + 's'
+            }).addTo(countdownContainer);
+
+            this.secondsText.setFont('40px youyuan, sans-serif');
+
+            // 显示分数
+            var scoreContainer = new Hilo.Container({
+                id: 'scoreContainer',
+                width: 150,
+                height: 80,
+                y: 20
             }).addTo(this.gameScene);
+            scoreContainer.x = (this.width - scoreContainer.width) / 2;
 
-            this.secondsText.setFont('72px youyuan, sans-serif');
+            var scoreTip = new Hilo.Bitmap({
+                image: 'images/game/score_tip.png',
+                width: 90,
+                height: 25,
+                x: 30
+            }).addTo(scoreContainer);
 
-            var countdownTip = new Hilo.Text({
-                id: 'countdownTip',
+            this.scoreText = new Hilo.Text({
+                width: scoreContainer.width,
+                y: scoreTip.height + 5,
                 color: '#EF3331',
-                width: 120,
-                height: 65,
-                x: this.secondsText.x - 90,
-                y: 50,
-                text: '倒计时'
-            }).addTo(this.gameScene);
-            countdownTip.setFont('30px youyuan, sans-serif');
+                textAlign: 'center',
+                text: '0 对'
+            }).addTo(scoreContainer);
+            this.scoreText.setFont('40px youyuan, sans-serif');
+
 
 
             //绑定开始游戏按钮
@@ -187,10 +229,15 @@
                 this.gameOverScene.getChildById('shareContainer').visible = false;
             }.bind(this));
 
-            // 看看主角的故事
+            // 获取桃花符
             this.gameOverScene.getChildById('moreBtn').on(Hilo.event.POINTER_START, function(e) {
-                window.href = '#';
+                // this.gameOverScene.getChildById('moreContainer').visible = true;
             }.bind(this));
+
+            // 关闭桃花符
+            // this.gameOverScene.getChildById('moreContainer').getChildById('closeBtn').on(Hilo.event.POINTER_START, function(e) {
+                // this.gameOverScene.getChildById('moreContainer').visible = false;
+            // }.bind(this));
 
 
             // 声效
@@ -361,6 +408,9 @@
                 }, timeout * 1000);
               }
 
+              // 更新分数
+                this.scoreText.text = this.score + ' 对';
+
 
                 // 如果过了 1s
                 if (now - this.oldTime >= 1000) {
@@ -370,7 +420,12 @@
 
                 // console.log(this.seconds);
 
-                this.secondsText.text = this.seconds + 's';
+                if (this.seconds < 10) {
+                    this.secondsText.text = '0' + this.seconds + 's';
+                } else {
+                    this.secondsText.text = this.seconds + 's';
+                }
+
 
                 // 倒计时为 0, 游戏结束
                 if (this.seconds < 0) {

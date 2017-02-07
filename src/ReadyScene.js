@@ -12,13 +12,13 @@ var ReadyScene = ns.ReadyScene = Hilo.Class.create({
 
         var ground1 = new Hilo.Bitmap({
             image: properties.ground1,
-            rect: [0, 0, 80, 1000],
+            rect: [0, 0, 80, 2000],
             x: 0,
             y: 0
         });
         var ground2 = new Hilo.Bitmap({
             image: properties.ground2,
-            rect: [0, 0, 80, 1000],
+            rect: [0, 0, 80, 2000],
             y: 0
         });
 
