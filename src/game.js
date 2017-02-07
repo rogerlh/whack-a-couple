@@ -20,7 +20,7 @@
         coupleMaxX: 0,
         coupleMinX: 0,
         seconds: 0, //倒计时, 秒数设置在 gameStart() 里
-        gameTime: 20, //游戏时间
+        gameTime: 5, //游戏时间
         secondsText: null,
 
         gameReadyScene: null, //开始界面
@@ -232,11 +232,24 @@
             // 获取桃花符
             this.gameOverScene.getChildById('moreBtn').on(Hilo.event.POINTER_START, function(e) {
                 this.gameOverScene.getChildById('moreContainer').visible = true;
+                document.removeEventListener('touchstart', preventDefault);
+                document.getElementsByTagName('body')[0].setAttribute('style', 'user-select: all;' +
+                    ' -webkit-user-select: all;');
+
+                var img = document.createElement("img");
+                document.getElementById("moreContainer").appendChild(img);
+                img.src = 'images/over/qrcode.png';
+                img.setAttribute('style', 'pointer-events: auto;');
+
+                // var img2 = document.createElement("img");
+                // document.getElementById("moreContainer").appendChild(img2);
+                // img2.src = 'images/over/panel_more.png';
             }.bind(this));
 
             // 关闭桃花符
             this.gameOverScene.getChildById('moreContainer').getChildById('closeMoreBtn').on(Hilo.event.POINTER_START, function(e) {
                 this.gameOverScene.getChildById('moreContainer').visible = false;
+                document.addEventListener('touchstart', preventDefault);
             }.bind(this));
 
 

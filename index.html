@@ -27,10 +27,12 @@
             document.write('<meta name="viewport" content="width=640, user-scalable=no">');
         }
 
+        function preventDefault(e) {
+            e.preventDefault();
+        }
+
         // 固定网页
-        document.addEventListener('touchstart', function (ev) {
-            event.preventDefault();
-        });
+        document.addEventListener('touchstart', preventDefault);
 
     </script>
 
@@ -56,15 +58,12 @@
             margin: 0;
             font-size: 12px;
             background-color: #fff;
-            display: flex;
-            /*align-items: center;*/
-            /*justify-content: center;*/
+            -webkit-user-select: none;
+            user-select: none;
         }
 
         body, html {
             height: 100%;
-            -webkit-user-select: none;
-            user-select: none;
             overflow: hidden;
         }
     </style>
@@ -80,7 +79,9 @@
 </head>
 
 <body>
-    <img id="share-img" src="images/share1.jpg" style="visibility: hidden; width: 0; height: 0;" />
+    <div style="overflow: hidden; width: 0; height: 0;">
+        <img id="share-img" src="images/share1.jpg" width="620" height="620" />
+    </div>
 </body>
 
 </html>

@@ -104,11 +104,13 @@
                 visible: false
             });
 
-            var morePanel = new Hilo.Bitmap({
-                id: 'morePanel',
-                image: 'images/over/panel_more.png',
-                rect: [0, 0, 640, 1000]
-            }).addTo(moreContainer);
+            // var morePanel = new Hilo.Bitmap({
+            //     id: 'morePanel',
+            //     image: 'images/over/panel_more.png',
+            //     rect: [0, 0, 640, 1000]
+            // }).addTo(moreContainer);
+
+
 
             // 关闭获取桃花符遮罩按钮
             var closeMoreBtn = new Hilo.Bitmap({
