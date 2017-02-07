@@ -20,6 +20,7 @@ var Asset = ns.Asset = Hilo.Class.create({
     couple_r_1: null,
     couple_r_2: null,
     couple_r_3: null,
+    hentai_sprite: null,
 
     load: function(){
         var resources = [
@@ -30,6 +31,7 @@ var Asset = ns.Asset = Hilo.Class.create({
             {id:'countdown', src:'images/game/countdown.png'},
             {id:'ground1', src:'images/game/ground1.png'},
             {id:'ground2', src:'images/game/ground2.png'},
+            {id:'hentai_sprite', src:'images/game/hentai_sprite.png'},
             {id:'hentai', src:'images/game/hentai.png'},
 
             {id:'levelImage1', src:'images/over/lv1.png'},
@@ -62,8 +64,8 @@ var Asset = ns.Asset = Hilo.Class.create({
         this.logo = this.queue.get('logo').content;
         this.startBtn = this.queue.get('startBtn').content;
         this.buttonTip = this.queue.get('buttonTip').content;
-        this.hentai = this.queue.get('hentai').content;
         this.countdown = this.queue.get('countdown').content;
+        this.hentai = this.queue.get('hentai').content;
         this.ground1 = this.queue.get('ground1').content;
         this.ground2 = this.queue.get('ground2').content;
         this.replayBtn = this.queue.get('replayBtn').content;
@@ -72,6 +74,17 @@ var Asset = ns.Asset = Hilo.Class.create({
         this.moreBtn = this.queue.get('moreBtn').content;
         this.sharePanel = this.queue.get('sharePanel').content;
 
+
+        this.hentai_sprite = new Hilo.TextureAtlas({
+            image: this.queue.get('hentai_sprite').content,
+            frames: [[0, 0, 256, 512],
+                     [256, 0, 256, 512],
+                     [512, 0, 256, 512],
+                    ],
+            sprites: {
+                hentai: [0, 1, 1]
+            }
+        });
 
         this.couple_b_1 = new Hilo.TextureAtlas({
             image: this.queue.get('couple_b_1').content,
