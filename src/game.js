@@ -243,13 +243,13 @@
 
             // 获取桃花符
             this.gameOverScene.getChildById('moreBtn').on(Hilo.event.POINTER_START, function(e) {
-                // this.gameOverScene.getChildById('moreContainer').visible = true;
+                this.gameOverScene.getChildById('moreContainer').visible = true;
             }.bind(this));
 
             // 关闭桃花符
-            // this.gameOverScene.getChildById('moreContainer').getChildById('closeBtn').on(Hilo.event.POINTER_START, function(e) {
-                // this.gameOverScene.getChildById('moreContainer').visible = false;
-            // }.bind(this));
+            this.gameOverScene.getChildById('moreContainer').getChildById('closeMoreBtn').on(Hilo.event.POINTER_START, function(e) {
+                this.gameOverScene.getChildById('moreContainer').visible = false;
+            }.bind(this));
 
 
             // 声效
