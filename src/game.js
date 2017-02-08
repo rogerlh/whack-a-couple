@@ -20,7 +20,7 @@
         coupleMaxX: 0,
         coupleMinX: 0,
         seconds: 0, //倒计时, 秒数设置在 gameStart() 里
-        gameTime: 60, //游戏时间
+        gameTime: 10, //游戏时间
         secondsText: null,
 
         gameReadyScene: null, //开始界面
@@ -226,6 +226,9 @@
 
             // 重新开始游戏按钮
             this.gameOverScene.getChildById('replayBtn').on(Hilo.event.POINTER_START, function(e) {
+                if(this.seconds > -1){ //不结束超过一秒不给按
+                  return;
+                }
                 //阻止舞台stage响应后续事件
                 e.stopImmediatePropagation();
                 this.gameStart();
@@ -406,9 +409,9 @@
                           that.hentai_sprite.goto(0, true);
                       });
 
-                      this.score += 1; //加1得分
 
                       if (newCouple.life > 0) {
+                          this.score += 1; //加1得分
                           newCouple.life -= 1;
                           if(life == 2){  //是红色情侣被击中
                             newCouple.addFrame(coupleBreakSprite, 0);
@@ -470,6 +473,14 @@
                 }
 
             } //endif state == playing
+            if (this.state === 'over') {  //gameOver后，继续计时
+              var now = new Date().getTime(); // 当前的时间
+              // 如果过了 1s
+              if (now - this.oldTime >= 1000) {
+                  this.seconds--; // 倒计时减 1s
+                  this.oldTime = now;
+              }
+            }
         },
 
         createCouple: function(){
