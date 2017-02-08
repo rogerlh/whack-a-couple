@@ -20,7 +20,7 @@
         coupleMaxX: 0,
         coupleMinX: 0,
         seconds: 0, //倒计时, 秒数设置在 gameStart() 里
-        gameTime: 60, //游戏时间
+        gameTime: 20, //游戏时间
         secondsText: null,
 
         gameReadyScene: null, //开始界面
@@ -226,7 +226,7 @@
 
             // 重新开始游戏按钮
             this.gameOverScene.getChildById('replayBtn').on(Hilo.event.POINTER_START, function(e) {
-                if(this.seconds > -1){ //不结束超过一秒不给按
+                if(this.seconds > -2){ //不结束超过两秒不给按
                   return;
                 }
                 //阻止舞台stage响应后续事件
