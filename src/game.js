@@ -168,10 +168,10 @@
             var countdownTip = new Hilo.Text({
                 id: 'countdownTip',
                 color: '#EF3331',
-                width: 60,
-                height: 40,
+                width: 90,
+                height: 60,
                 // x: this.secondsText.x - 20,
-                y: 10,
+                y: 18,
                 text: '倒计时'
             }).addTo(countdownContainer);
 
@@ -194,8 +194,8 @@
             // 显示分数
             var scoreContainer = new Hilo.Container({
                 id: 'scoreContainer',
-                width: 180,
-                height: 96,
+                width: 150,
+                height: 80,
                 y: 20
             }).addTo(this.gameScene);
             scoreContainer.x = (this.width - scoreContainer.width) / 2;
