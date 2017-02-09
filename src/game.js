@@ -160,7 +160,7 @@
                 id: 'countdownContainer',
                 width: 135,
                 height: 40,
-                x: this.width - 135 - 20,
+                x: this.width - 135 - 52,
                 y: 24
             }).addTo(this.gameScene);
 
@@ -168,14 +168,14 @@
             var countdownTip = new Hilo.Text({
                 id: 'countdownTip',
                 color: '#EF3331',
-                width: 90,
-                height: 60,
+                width: 72,
+                height: 48,
                 // x: this.secondsText.x - 20,
-                y: 18,
+                y: 14,
                 text: '倒计时'
             }).addTo(countdownContainer);
 
-            countdownTip.setFont('20px youyuan, sans-serif');
+            countdownTip.setFont('24px youyuan, sans-serif');
 
 
             // 倒计时时间
@@ -183,19 +183,18 @@
                 id: 'secondsText',
                 color: '#EF3331',
                 width: 120,
-                height: 40,
+                height: 48,
                 x: countdownTip.x + countdownTip.width + 5,
-                y: -2,
                 text: this.seconds + 's'
             }).addTo(countdownContainer);
 
-            this.secondsText.setFont('40px youyuan, sans-serif');
+            this.secondsText.setFont('48px youyuan, sans-serif');
 
             // 显示分数
             var scoreContainer = new Hilo.Container({
                 id: 'scoreContainer',
-                width: 150,
-                height: 80,
+                width: 180,
+                height: 96,
                 y: 20
             }).addTo(this.gameScene);
             scoreContainer.x = (this.width - scoreContainer.width) / 2;
