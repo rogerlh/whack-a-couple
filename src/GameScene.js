@@ -32,6 +32,8 @@ var GameScene = ns.GameScene = Hilo.Class.create({
 
         countdown.x = this.width - countdown.width;
         countdown.y = 0;
+        countdown.scaleX = 1.2;
+        countdown.scaleY = 1.2;
 
         //放置ground的位置
         ground1.x = 0;
