@@ -20,7 +20,7 @@
         coupleMaxX: 0,
         coupleMinX: 0,
         seconds: 0, //倒计时, 秒数设置在 gameStart() 里
-        gameTime: 20, //游戏时间
+        gameTime: 40, //游戏时间
         secondsText: null,
 
         gameReadyScene: null, //开始界面
@@ -194,8 +194,8 @@
             // 显示分数
             var scoreContainer = new Hilo.Container({
                 id: 'scoreContainer',
-                width: 150,
-                height: 80,
+                width: 180,
+                height: 96,
                 y: 20
             }).addTo(this.gameScene);
             scoreContainer.x = (this.width - scoreContainer.width) / 2;
@@ -308,28 +308,25 @@
                 var interval = 250;
                 var frequency = 0;
 
-                if (this.gameTime - this.seconds <= this.gameTime / 12) { //第一阶段
+                if (this.gameTime - this.seconds <= this.gameTime / 8) { //第一阶段
                   frequency = 500;
-                  timeout = 3;
-                }else if (this.gameTime - this.seconds > this.gameTime / 12 && this.gameTime - this.seconds <= this.gameTime / 6) { //第二阶段
+                  timeout = 7;
+                }else if (this.gameTime - this.seconds > this.gameTime / 8 && this.gameTime - this.seconds <= this.gameTime / 4) { //第二阶段
                   frequency = 333;
-                  timeout = 3;
-                }else if (this.gameTime - this.seconds > this.gameTime / 6 && this.gameTime - this.seconds <= this.gameTime / 3) { //第三阶段
+                  timeout = 7;
+                }else if (this.gameTime - this.seconds > this.gameTime / 4 && this.gameTime - this.seconds <= this.gameTime / 2) { //第三阶段
                   frequency = 250;
-                  timeout = 2;
-                }else if (this.gameTime - this.seconds > this.gameTime / 3 && this.gameTime - this.seconds <= this.gameTime / 2) { //第四阶段
+                  timeout = 6;
+                }else if (this.gameTime - this.seconds > this.gameTime / 2 && this.gameTime - this.seconds <= this.gameTime / 4 * 3) { //第四阶段
                   frequency = 200;
-                  timeout = 2;
-                }else if (this.gameTime - this.seconds > this.gameTime / 2 && this.gameTime - this.seconds <= this.gameTime / 1.2) { //第五阶段
-                  frequency = 200;
-                  timeout = 1.5;
-                }else { //第六阶段
+                  timeout = 5;
+                }else { //第五阶段
                   frequency = 167;
-                  timeout = 1.5;
+                  timeout = 4;
                 }
 
                 //随机算法
-                if (this.gameTime - this.seconds <= this.gameTime / 2) { //第1至4阶段
+                if (this.gameTime - this.seconds <= this.gameTime / 4 * 3) { //第1至4阶段
                     if ((now) - this.lastTime >= frequency) { //1s出现一个
                         this.lastTime = now;
                         life = 1; //生产普通情侣

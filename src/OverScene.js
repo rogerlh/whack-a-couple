@@ -152,14 +152,14 @@
             var imageSrc;
             var shareSrc;
 
-            if (score <= 100) {
+            if (score <= 50) {
                 imageSrc = 'images/over/lv1.png'; // 等级一
                 shareSrc = 'images/share1.jpg';
 
                 this.scoreTip.text = '我用微弱的力量';
                 this.scoreTipBottom.text = '可累死我了，单身的过来抱紧。'
 
-            } else if (score > 100 && score <= 250) {
+            } else if (score > 50 && score <= 120) {
                 imageSrc = 'images/over/lv2.png'; // 等级二
                 shareSrc = 'images/share2.jpg';
 
