@@ -215,11 +215,42 @@
             }).addTo(scoreContainer);
             this.scoreText.setFont('40px youyuan, sans-serif');
 
-            var buttonSound = Hilo.WebSound.getAudio({
-                src: 'audio/hit_button.mp3',
-                loop: false,
-                volume: 1
-            });
+            if (navigator.userAgent.toLowerCase().indexOf('iphone') > -1) {
+
+                // iOS 使用 WebAudio
+                this.buttonSound = new Hilo.WebAudio({
+                    src: 'audio/hit_button.mp3'
+                }).load();
+
+                this.sound1 = new Hilo.WebAudio({
+                    src: 'audio/hit1.mp3'
+                }).load();
+
+                this.sound2 = new Hilo.WebAudio({
+                    src: 'audio/hit2.mp3'
+                }).load();
+
+                this.sound3 = new Hilo.WebAudio({
+                    src: 'audio/hit3.mp3'
+                }).load();
+
+            } else {
+                this.buttonSound = Hilo.WebSound.getAudio({
+                    src: 'audio/hit_button.mp3'
+                });
+
+                this.sound1 = Hilo.WebSound.getAudio({
+                    src: 'audio/hit1.mp3'
+                });
+
+                this.sound2 = Hilo.WebSound.getAudio({
+                    src: 'audio/hit2.mp3'
+                });
+
+                this.sound3 = Hilo.WebSound.getAudio({
+                    src: 'audio/hit3.mp3'
+                });
+            }
 
 
 
@@ -227,7 +258,7 @@
             this.gameReadyScene.getChildById('start').on(Hilo.event.POINTER_START, function(e) {
                 e._stopped = true;
                 this.gameStart();
-                buttonSound.play();
+                this.buttonSound.play();
             }.bind(this));
 
             // 重新开始游戏按钮
@@ -274,26 +305,9 @@
             }.bind(this));
 
 
-            // 声效
-            var sound1 = Hilo.WebSound.getAudio({
-                src: 'audio/hit1.mp3',
-                loop: false,
-                volume: 1
-            });
 
-            var sound2 = Hilo.WebSound.getAudio({
-                src: 'audio/hit2.mp3',
-                loop: false,
-                volume: 1
-            });
 
-            var sound3 = Hilo.WebSound.getAudio({
-                src: 'audio/hit3.mp3',
-                loop: false,
-                volume: 1
-            });
-
-            this.hitSound = [sound1, sound2, sound3];
+            this.hitSound = [this.sound1, this.sound2, this.sound3];
         },
 
         onUpdate: function(delta) {

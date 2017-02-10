@@ -51,7 +51,6 @@ var Asset = ns.Asset = Hilo.Class.create({
             {id:'couple_r_1', src:'images/couple/couple_r_1.png'},
             {id:'couple_r_2', src:'images/couple/couple_r_2.png'},
             {id:'couple_r_3', src:'images/couple/couple_r_3.png'},
-
         ];
 
         this.queue = new Hilo.LoadQueue();
@@ -73,7 +72,6 @@ var Asset = ns.Asset = Hilo.Class.create({
         this.closeBtn = this.queue.get('closeBtn').content;
         this.moreBtn = this.queue.get('moreBtn').content;
         this.sharePanel = this.queue.get('sharePanel').content;
-
 
         this.hentai_sprite = new Hilo.TextureAtlas({
             image: this.queue.get('hentai_sprite').content,
