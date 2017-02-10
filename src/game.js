@@ -215,12 +215,19 @@
             }).addTo(scoreContainer);
             this.scoreText.setFont('40px youyuan, sans-serif');
 
+            var buttonSound = Hilo.WebSound.getAudio({
+                src: 'audio/hit_button.mp3',
+                loop: false,
+                volume: 1
+            });
+
 
 
             //绑定开始游戏按钮
             this.gameReadyScene.getChildById('start').on(Hilo.event.POINTER_START, function(e) {
                 e._stopped = true;
                 this.gameStart();
+                buttonSound.play();
             }.bind(this));
 
             // 重新开始游戏按钮
